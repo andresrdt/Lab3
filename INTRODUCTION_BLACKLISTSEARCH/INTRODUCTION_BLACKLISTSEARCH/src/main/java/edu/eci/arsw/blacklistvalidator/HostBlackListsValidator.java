@@ -45,23 +45,18 @@ public class HostBlackListsValidator {
             for (int i = 0; i < a; i++) {
                 inicio += count;
                 Servidores hilo = new Servidores(inicio - count, inicio, ipaddress, skds);
-
                 thread.add(hilo);
-
                 hilo.start();
             }
         } else {
             int count = (int) skds.getRegisteredServersCount() / a;
             for (int i = 0; i < a; i++) {
-
                 inicio += count;
                 if (inicio > skds.getRegisteredServersCount()) {
                     inicio = skds.getRegisteredServersCount();
                 }
                 Servidores hilo = new Servidores(inicio - count, inicio, ipaddress, skds);
-
                 thread.add(hilo);
-
                 hilo.start();
             }
         }
