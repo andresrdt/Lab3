@@ -21,31 +21,38 @@ A class is created for the threads that in this case is the class Servidores.
 
 ![](Screenshots/jvi1.PNG)
 
-Amdahls law
+*Amdahls law
 
 ![](Screenshots/jviG1.PNG)
 
 * 4 threads(number of cores in my computer):
 
 ![](Screenshots/jvi2.PNG)
-Amdahls law
+
+*Amdahls law
 
 ![](Screenshots/jviG2.PNG)
+
 * 8 threads:
 
 ![](Screenshots/jvi3.PNG)
-Amdahls law
+
+*Amdahls law
 
 ![](Screenshots/jviG3.PNG)
+
 * 50 threads:
 
 ![](Screenshots/jvi4.PNG)
-Amdahls law
+
+*Amdahls law
 
 ![](Screenshots/jviG4.PNG)
+
 * 100 threads:
 
 ![](Screenshots/jvi5.PNG)
-Amdahls law
+
+*Amdahls law
 
 ![](Screenshots/jviG5.PNG)
