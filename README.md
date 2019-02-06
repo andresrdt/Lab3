@@ -45,7 +45,7 @@ Amdahls law
 ![](Screenshots/jviG4.PNG)
 * 100 threads:
 
-![](Screenshots/jvi15.PNG)
+![](Screenshots/jvi5.PNG)
 Amdahls law
 
 ![](Screenshots/jviG5.PNG)
