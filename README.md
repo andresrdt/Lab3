@@ -15,6 +15,8 @@ A class is created for the threads that in this case is the class Servidores.
 
 # Part III - Discussion
 
+instead of using the entire blacklist list, a range is used, which minimizes the number of cases.
+
 # Part IV - Performance Evaluation
 
 * a single thread: 
