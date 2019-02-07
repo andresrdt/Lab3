@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import enums.GridSize;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -37,7 +39,11 @@ public class SnakeApp {
     private static Board board;
     int nr_selected = 0;
     Thread[] thread = new Thread[MAX_THREADS];
-
+    public final static Object object = new Object();
+    JButton start;
+    JButton Pause;
+    JButton Resume;
+    int snakeFrist;
     public SnakeApp() {
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         frame = new JFrame("The Snake Race");
@@ -55,8 +61,35 @@ public class SnakeApp {
         
         JPanel actionsBPabel=new JPanel();
         actionsBPabel.setLayout(new FlowLayout());
-        actionsBPabel.add(new JButton("Action "));
+        actionsBPabel.add(start=new JButton("Start "));
+        actionsBPabel.add(Pause=new JButton("Pause "));
+        actionsBPabel.add(Resume=new JButton("Resume "));
         frame.add(actionsBPabel,BorderLayout.SOUTH);
+        start.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae) {
+                for (int i = 0; i != MAX_THREADS; i++) {
+                    thread[i] = new Thread(snakes[i]);
+                    thread[i].start();
+                }
+            }
+
+        });
+        Pause.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae) {
+                for (int i = 0; i != MAX_THREADS; i++) {
+                    snakes[i].pause();
+                }
+            }
+
+        });
+        Resume.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae) {
+                synchronized (object) {
+                    object.notifyAll();
+                }
+            }
+
+        });
 
     }
 
@@ -67,14 +100,10 @@ public class SnakeApp {
 
     private void init() {
         
-        
-        
         for (int i = 0; i != MAX_THREADS; i++) {
             
             snakes[i] = new Snake(i + 1, spawn[i], i + 1);
             snakes[i].addObserver(board);
-            thread[i] = new Thread(snakes[i]);
-            thread[i].start();
         }
 
         frame.setVisible(true);
@@ -84,6 +113,9 @@ public class SnakeApp {
             int x = 0;
             for (int i = 0; i != MAX_THREADS; i++) {
                 if (snakes[i].isSnakeEnd() == true) {
+                    if (x==0){
+                       snakeFrist=i;  
+                    }
                     x++;
                 }
             }

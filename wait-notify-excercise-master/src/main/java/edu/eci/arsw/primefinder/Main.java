@@ -6,10 +6,7 @@ public class Main {
         Control control = Control.newControl();
         
         control.start();
+
     }
 	
 }
-
-
-
-

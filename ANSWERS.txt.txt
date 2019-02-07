@@ -1,0 +1,4 @@
+1. Possible race conditions
+1.1 When two or more snakes (4 maximum) eat a mouse at the same time.
+1.2 When two or more (4 maximum) catch an accelerator at the same time.
+1.3 When two or more (4 maximum) take a teleporter at the same time.
